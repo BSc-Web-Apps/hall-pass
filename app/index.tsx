@@ -1,31 +1,41 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import * as React from "react";
-import { Info } from "~/lib/icons/Info";
-import { Home as HomeIcon } from "~/lib/icons/Home";
-import SettingsScreen from "./settings";
-import HomeScreen from "./homeScreen";
+import { View } from "react-native";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "~/components/ui/card";
+import { Text } from "~/components/ui/text";
 
-const Tab = createBottomTabNavigator();
-
-export default function App() {
+export default function HomeScreen() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <HomeIcon size={size} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Settings"
-        component={SettingsScreen}
-        options={{
-          tabBarIcon: ({ color, size }) => <Info size={size} color={color} />,
-        }}
-      />
-    </Tab.Navigator>
+    <View className="flex-1 justify-center items-center gap-5 p-6 bg-background">
+      <Card className="w-full max-w-sm p-6 rounded-2xl">
+        <CardHeader className="items-center">
+          <CardTitle className="pb-2 text-center">
+            This is a card title
+          </CardTitle>
+        </CardHeader>
+
+        <CardContent>
+          <View className="flex-row justify-center gap-3">
+            <View className="items-center">
+              <Text className="text-sm text-muted-foreground">
+                This is some
+              </Text>
+              <Text className="text-xl font-semibold">Card Content</Text>
+            </View>
+          </View>
+        </CardContent>
+
+        <CardFooter className="flex-col gap-3 pb-0">
+          <View className="flex-row items-center overflow-hidden">
+            <Text>This is the card footer</Text>
+          </View>
+        </CardFooter>
+      </Card>
+    </View>
   );
 }

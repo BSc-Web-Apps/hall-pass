@@ -1,29 +1,20 @@
-import '~/global.css';
+import "~/global.css";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import * as React from "react";
+import { Platform } from "react-native";
+import { setAndroidNavigationBar } from "~/lib/android-navigation-bar";
+import { Home as HomeIcon } from "~/lib/icons/Home";
+import { Info } from "~/lib/icons/Info";
+import { useColorScheme } from "~/lib/useColorScheme";
+import HomeScreen from "./index";
+import SettingsScreen from "./settings";
 
-import { DarkTheme, DefaultTheme, Theme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import * as React from 'react';
-import { Platform } from 'react-native';
-import { NAV_THEME } from '~/lib/constants';
-import { useColorScheme } from '~/lib/useColorScheme';
-import { PortalHost } from '@rn-primitives/portal';
-import { ThemeToggle } from '~/components/ThemeToggle';
-import { setAndroidNavigationBar } from '~/lib/android-navigation-bar';
-
-const LIGHT_THEME: Theme = {
-  ...DefaultTheme,
-  colors: NAV_THEME.light,
-};
-const DARK_THEME: Theme = {
-  ...DarkTheme,
-  colors: NAV_THEME.dark,
-};
+const Tab = createBottomTabNavigator();
 
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
-} from 'expo-router';
+} from "expo-router";
 
 export default function RootLayout() {
   const hasMounted = React.useRef(false);
@@ -35,9 +26,9 @@ export default function RootLayout() {
       return;
     }
 
-    if (Platform.OS === 'web') {
+    if (Platform.OS === "web") {
       // Adds the background color to the html element to prevent white background on overscroll.
-      document.documentElement.classList.add('bg-background');
+      document.documentElement.classList.add("bg-background");
     }
     setAndroidNavigationBar(colorScheme);
     setIsColorSchemeLoaded(true);
@@ -49,21 +40,37 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
-      <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} />
-      <Stack>
-        <Stack.Screen
-          name='index'
-          options={{
-            title: 'Starter Base',
-            headerRight: () => <ThemeToggle />,
-          }}
-        />
-      </Stack>
-      <PortalHost />
-    </ThemeProvider>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarStyle: {
+          backgroundColor: "hsl(11, 72%, 3%)",
+          borderTopColor: "transparent",
+        },
+        tabBarActiveTintColor: "hsl(11, 100%, 60%)",
+        tabBarInactiveTintColor: "hsl(11, 20%, 64%, 0.5)",
+      }}
+    >
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <HomeIcon size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => <Info size={size} color={color} />,
+        }}
+      />
+    </Tab.Navigator>
   );
 }
 
 const useIsomorphicLayoutEffect =
-  Platform.OS === 'web' && typeof window === 'undefined' ? React.useEffect : React.useLayoutEffect;
+  Platform.OS === "web" && typeof window === "undefined"
+    ? React.useEffect
+    : React.useLayoutEffect;
