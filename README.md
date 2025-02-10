@@ -1,16 +1,36 @@
-# Starter base
+# Hall Pass - starter project
 
-A starting point to help you set up your project quickly and use the common components provided by `react-native-reusables`. The idea is to make it easier for you to get started.
+This is the starter project code for 'Hall Pass' - a To Do List app aimed at students studying for their undergraduate degree.
 
-## Features
+## Getting started
 
-- NativeWind v4
-- Dark and light mode
-  - Android Navigation Bar matches mode
-  - Persistent mode
-- Common components
-  - ThemeToggle, Avatar, Button, Card, Progress, Text, Tooltip
+1. Open a terminal and run
 
-<img src="https://github.com/mrzachnugent/react-native-reusables/assets/63797719/42c94108-38a7-498b-9c70-18640420f1bc"
-     alt="starter-base-template"
-     style="width:270px;" />
+    ```bash
+    npm i
+    ```
+2. Next, install the Expo CLI tool on your machine:
+
+    ```bash
+    npm install -g expo-cli
+    ```
+
+3. On your phone, install **Expo Go** from the app store for your device.
+
+## Running the project
+
+1. Start the server:
+
+    ```bash
+    npm run dev
+    ```
+2. You will see a QR code in your terminal. Scan this with your device to see a live preview of the app directly in the phone itself.
+
+## Tech stack
+
+The project makes use of the following:
+
+- React Native - [docs](https://reactnative.dev/)
+- Expo - [docs](https://expo.dev/)
+- NativeWind - Use [TailwindCSS](https://tailwindcss.com/) classes in your React Native project. See [docs](https://www.nativewind.dev/)
+- React Native Reusables - a library of UI elements built with [NativeWind](https://www.nativewind.dev/) classes. See [docs](https://rnr-docs.vercel.app/getting-started/introduction/)
