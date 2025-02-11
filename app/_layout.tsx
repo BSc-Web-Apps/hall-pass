@@ -42,12 +42,13 @@ export default function RootLayout() {
   return (
     <Tab.Navigator
       screenOptions={{
+        headerShown: false,
         tabBarStyle: {
           backgroundColor: "hsl(11, 72%, 3%)",
           borderTopColor: "transparent",
         },
         tabBarActiveTintColor: "hsl(11, 100%, 60%)",
-        tabBarInactiveTintColor: "hsl(11, 20%, 64%, 0.5)",
+        tabBarInactiveTintColor: "hsla(11, 20%, 64%, 0.5)",
       }}
     >
       <Tab.Screen
