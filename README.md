@@ -34,7 +34,7 @@ This is the starter project code for 'Hall Pass' - a To Do List app aimed at stu
 
 2. You will see a QR code in your terminal like the one below:
 
-   ![QR Code](./assets/images/webp/expo-device-qr.webp)
+   <img src="./assets/images/webp/expo-device-qr.webp" alt="QR Code" style="max-width: 24rem; height: auto;" />
 
    Scan this with your device to see a live preview of the app directly on your phone.
 
